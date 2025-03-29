@@ -136,3 +136,28 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Migraciones excepto el archivo inicial
+*/migrations/*
+!*/migrations/__init__.py
+
+# Variables de entorno
+.env
+.env.local
+*.env
+
+# Archivos de desarrollo local
+local_settings.py
+settings/local.py
+
+# Archivos de media subidos (si no están en /media/)
+uploads/
+
+# Cache de migraciones específicas
+apps/*/migrations/__pycache__/
+
+# Claves/credenciales
+*.key
+*.pem
+*.cert
+*.pub
