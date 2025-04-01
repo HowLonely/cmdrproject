@@ -5,16 +5,295 @@
 <html lang="en">
 <head>
   {% compress css %}
-    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
   {% endcompress %}
+
+  <link rel="stylesheet" href="{% static 'css/simple-datatables.css' %}">
 
   {% block title %}<title>CMDR APP</title>{% endblock %}
 </head>
 
 <body>
   <h1 class="text-3xl text-green-800">Django + Tailwind CSS + Flowbite</h1>
+  
+<div id="accordion-collapse" data-accordion="collapse">
+  <h2 id="accordion-collapse-heading-1">
+    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+      <span>What is Flowbite?</span>
+      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+      </svg>
+    </button>
+  </h2>
+  <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+      <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+      <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+    </div>
+  </div>
+  <h2 id="accordion-collapse-heading-2">
+    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
+      <span>Is there a Figma file available?</span>
+      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+      </svg>
+    </button>
+  </h2>
+  <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+      <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+      <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
+    </div>
+  </div>
+  <h2 id="accordion-collapse-heading-3">
+    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">
+      <span>What are the differences between Flowbite and Tailwind UI?</span>
+      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+      </svg>
+    </button>
+  </h2>
+  <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+    <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
+      <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
+      <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+      <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+      <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
+        <li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+        <li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
   {% block sidebar %}<!-- insert default navigation text for every page -->{% endblock %}
   {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+  
+
+  <table id="search-table">
+    <thead>
+        <tr>
+            <th>
+                <span class="flex items-center">
+                    Company Name
+                </span>
+            </th>
+            <th>
+                <span class="flex items-center">
+                    Ticker
+                </span>
+            </th>
+            <th>
+                <span class="flex items-center">
+                    Stock Price
+                </span>
+            </th>
+            <th>
+                <span class="flex items-center">
+                    Market Capitalization
+                </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple Inc.</td>
+            <td>AAPL</td>
+            <td>$192.58</td>
+            <td>$3.04T</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Microsoft Corporation</td>
+            <td>MSFT</td>
+            <td>$340.54</td>
+            <td>$2.56T</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Alphabet Inc.</td>
+            <td>GOOGL</td>
+            <td>$134.12</td>
+            <td>$1.72T</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Amazon.com Inc.</td>
+            <td>AMZN</td>
+            <td>$138.01</td>
+            <td>$1.42T</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">NVIDIA Corporation</td>
+            <td>NVDA</td>
+            <td>$466.19</td>
+            <td>$1.16T</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Tesla Inc.</td>
+            <td>TSLA</td>
+            <td>$255.98</td>
+            <td>$811.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Meta Platforms Inc.</td>
+            <td>META</td>
+            <td>$311.71</td>
+            <td>$816.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Berkshire Hathaway Inc.</td>
+            <td>BRK.B</td>
+            <td>$354.08</td>
+            <td>$783.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">TSMC</td>
+            <td>TSM</td>
+            <td>$103.51</td>
+            <td>$538.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">UnitedHealth Group Incorporated</td>
+            <td>UNH</td>
+            <td>$501.96</td>
+            <td>$466.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Johnson & Johnson</td>
+            <td>JNJ</td>
+            <td>$172.85</td>
+            <td>$452.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">JPMorgan Chase & Co.</td>
+            <td>JPM</td>
+            <td>$150.23</td>
+            <td>$431.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Visa Inc.</td>
+            <td>V</td>
+            <td>$246.39</td>
+            <td>$519.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Eli Lilly and Company</td>
+            <td>LLY</td>
+            <td>$582.97</td>
+            <td>$552.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Walmart Inc.</td>
+            <td>WMT</td>
+            <td>$159.67</td>
+            <td>$429.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Samsung Electronics Co., Ltd.</td>
+            <td>005930.KS</td>
+            <td>$70.22</td>
+            <td>$429.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Procter & Gamble Co.</td>
+            <td>PG</td>
+            <td>$156.47</td>
+            <td>$366.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Nestlé S.A.</td>
+            <td>NESN.SW</td>
+            <td>$120.51</td>
+            <td>$338.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Roche Holding AG</td>
+            <td>ROG.SW</td>
+            <td>$296.00</td>
+            <td>$317.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Chevron Corporation</td>
+            <td>CVX</td>
+            <td>$160.92</td>
+            <td>$310.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">LVMH Moët Hennessy Louis Vuitton</td>
+            <td>MC.PA</td>
+            <td>$956.60</td>
+            <td>$478.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Pfizer Inc.</td>
+            <td>PFE</td>
+            <td>$35.95</td>
+            <td>$200.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Novo Nordisk A/S</td>
+            <td>NVO</td>
+            <td>$189.15</td>
+            <td>$443.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">PepsiCo, Inc.</td>
+            <td>PEP</td>
+            <td>$182.56</td>
+            <td>$311.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">ASML Holding N.V.</td>
+            <td>ASML</td>
+            <td>$665.72</td>
+            <td>$273.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">The Coca-Cola Company</td>
+            <td>KO</td>
+            <td>$61.37</td>
+            <td>$265.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Oracle Corporation</td>
+            <td>ORCL</td>
+            <td>$118.36</td>
+            <td>$319.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Merck & Co., Inc.</td>
+            <td>MRK</td>
+            <td>$109.12</td>
+            <td>$276.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Broadcom Inc.</td>
+            <td>AVGO</td>
+            <td>$861.80</td>
+            <td>$356.00B</td>
+        </tr>
+        <tr>
+            <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">Mastercard Incorporated</td>
+            <td>MA</td>
+            <td>$421.44</td>
+            <td>$396.00B</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
   <script src="{% static 'js/flowbite.min.js' %}"></script>
+  <script src="{% static 'js/simple-datatables.js' %}"></script>
+
+  <script>
+    
+if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+  const dataTable = new simpleDatatables.DataTable("#search-table", {
+      searchable: true,
+      sortable: false
+  });
+}
+
+  </script>
 </body>
 </html>
