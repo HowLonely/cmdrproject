@@ -122,13 +122,17 @@ TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
-USE_TZ = True
-
-
+USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+# Esto es importante si estás desarrollando
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# Esto se usa en producción
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -140,8 +144,8 @@ LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ## Flowbite
-COMPRESS_ROOT = BASE_DIR / 'static'
+#COMPRESS_ROOT = BASE_DIR / 'static'
 
-COMPRESS_ENABLED = True
+#COMPRESS_ENABLED = True
 
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+#STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
