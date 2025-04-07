@@ -1,10 +1,153 @@
 {% extends "base_generic.html" %} {% block content %}
-<h1>CMDR Mantenimiento gimnasio</h1>
+<h1 class="text-center text-2xl ">CMDR Mantenimiento gimnasio</h1>
 
-<p>
-  {% lorem 1 b random %}
-</p>
+<div class="flex">
+<div class="mx-8 px-8 w-full">
+<table id="selection-table-gym" class="mx-8 px-8 w-full">
+  <thead>
+      <tr>
+          <th>
+              <span class="flex items-center">
+                  Tarea
+                  <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                  </svg>
+              </span>
+          </th>
+          <th>
+              <span class="flex items-center">
+                  Encargado
+                  <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                  </svg>
+              </span>
+          </th>
+          <th data-type="date" data-format="DD/MM/YYYY">
+              <span class="flex items-center">
+                  Fecha ingreso
+                  <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                  </svg>
+              </span>
+          </th>
+          <th data-type="date" data-format="DD/MM/YYYY">
+              <span class="flex items-center">
+                 Fecha termino
+                  <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                  </svg>
+              </span>
+          </th>
+          <th>
+            <span class="flex items-center">
+               Estado
+                <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                </svg>
+            </span>
+          </th>
+          <th>
+            <span class="flex items-center">
+              Num de maquina
+                <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                </svg>
+            </span>
+          </th>
+          <th>
+            <span class="flex items-center">
+              <p class="opacity-0">a</p>
+            </span>
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for solicitud in solicitudes %}
+      <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
+          <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ solicitud.tipo_incidente.nombre }}</td>
+          <td>{{ solicitud.encargado }}</td>
+          <td>{{ solicitud.fecha_hora_ingreso }}</td>
+          <td>{{ solicitud.fecha_hora_termino }}</td>
+          <td>{{ solicitud.estado }}</td>
+          <td>{{ solicitud.tipo_incidente.maquina.num_referencia }}</td>
+          <td>
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 14">
+              <path d="M16 2H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 0 1 0 2Z"/>
+            </svg>
+          </td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}
 
-<h2>TEST</h2>
+{% block scripts %}
+<script>
+if (document.getElementById("selection-table-gym") && typeof simpleDatatables.DataTable !== 'undefined') {
 
+  let multiSelect = false;
+  let rowNavigation = false;
+  let table = null;
+
+  const resetTable = function() {
+      if (table) {
+          table.destroy();
+      }
+
+      const options = {
+          rowRender: (row, tr, _index) => {
+              if (!tr.attributes) {
+                  tr.attributes = {};
+              }
+              if (!tr.attributes.class) {
+                  tr.attributes.class = "";
+              }
+              if (row.selected) {
+                  tr.attributes.class += " selected";
+              } else {
+                  tr.attributes.class = tr.attributes.class.replace(" selected", "");
+              }
+              return tr;
+          }
+      };
+      if (rowNavigation) {
+          options.rowNavigation = true;
+          options.tabIndex = 1;
+      }
+
+      table = new simpleDatatables.DataTable("#selection-table-gym", options);
+
+      // Mark all rows as unselected
+      table.data.data.forEach(data => {
+          data.selected = false;
+      });
+
+      table.on("datatable.selectrow", (rowIndex, event) => {
+          event.preventDefault();
+          const row = table.data.data[rowIndex];
+          if (row.selected) {
+              row.selected = false;
+          } else {
+              if (!multiSelect) {
+                  table.data.data.forEach(data => {
+                      data.selected = false;
+                  });
+              }
+              row.selected = true;
+          }
+          table.update();
+      });
+  };
+
+  // Row navigation makes no sense on mobile, so we deactivate it and hide the checkbox.
+  const isMobile = window.matchMedia("(any-pointer:coarse)").matches;
+  if (isMobile) {
+      rowNavigation = false;
+  }
+
+  resetTable();
+}
+</script>
 {% endblock %}
